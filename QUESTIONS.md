@@ -42,8 +42,30 @@ Answer: the output will be
 0
 ```
 
-When foo is called with 0, the JavaScript engine creates a Function execution context for the function and pushes it to the top of the call stack. 
-Since the initial value of d meets the if condition, recursion occurs with the line foo(d+1), where d will = 1. The Javascript engine yet again creates a new function execution context and pushes this to the top of the call stack. This loop of creating a functional execution context, pushing to the top of the call stack and calling on the recursion happens until d = 10. Since the if condition will no longer be met for d < 10, this particular call stack is finished with the line console.log(d). The Javascript engine then checks the call stack and resumes the execution where it left off from the top of the call stack to the bottom. The script will finally stop when the call stack is empty.
+When foo is called with 0, the conditions are met for a recursion to occur on line foo(d+1). This gets placed on top of the call stack and the JavaScript engine remembers the function still hasn't been fully complete.
+
+Each time foo(d+1) is called and placed on top of the call stack until foo receives (10). So the recursion loop of foo will look like the following:
+
+foo(1)
+foo(2)
+foo(3)
+foo(4)
+foo(5)
+foo(6)
+foo(7)
+foo(8)
+foo(9)
+foo(10)
+
+Note: foo(10) is placed on top of the call stack and foo(1) on the bottom.
+
+Once foo receives 10, the function reaches console.log(d), logs 10 and that particular function is complete. The JavaScript engine then checks the top of the call stack and realises "oh, I have foo(9) that needs completing!" 
+
+So foo 9 then reaces console.log(d), logs 9 and that function is complete. This pattern continues until foo(1).
+
+But remember we initially passed foo(0) at the very beginning, so it too will then be executed and reaches console.log(d), logs 0 and that function is complete and the call stack is finally empty! Phew!!
+
+.
 
 Qs3: If nothing is provided to `foo` we want the default response to be `5`. Explain the potential issue with the following code:
 
@@ -53,6 +75,18 @@ Qs3: If nothing is provided to `foo` we want the default response to be `5`. Exp
       console.log(d);
     }
 ```
+
+Answer: Any falsy value will result in d resorting to the default value of 5 which may not be the intention of the use.
+
+This could still be useful though in the context of interest, like in the following example:
+
+```js
+    function increaseInterestRate(d) {
+      d = d || 5;
+      statement.addInterest(d)
+    }
+```
+In this context, the interest rate will still increase and the person who holds this account will get into a bad mood.
 
 Qs4: Explain the output of the following code and why
 
@@ -66,6 +100,32 @@ Qs4: Explain the output of the following code and why
     console.log(bar(2))
 ```
 
+Answer: The output will be
+
+```
+3
+```
+The concept shown here is a closure. a variable called bar calls on the function foo which returns the inner anonymous function. 
+
+In essense bar will be bar = function(b) {return a + b}
+
+bar can then be called with whatever value we want. But here is the special thing about closures, the inner function always has access to the variables and parameters of its outer function, even after the function has returned. So in this specific example, bar will still have access to a!
+
+That is why bar = function(b) {return a + b} will still work, despite a not looking like it has been defined.
+
+The scope looks like the following:
+
+Global scope [
+  foo scope [
+    a = 1
+    bar scope [
+      b = 2
+    ]
+  ]
+]
+
+bar will search for a within its own scope and realise that "hey, a is not here". It will then search outside its scope and see that it is in foo and be "there you are!!". bar already has access to b within its own scope so it will not need to look any further. bar will then return the result of a + b
+
 Qs5: Explain how the following function would be used
 
 ```js
@@ -75,3 +135,5 @@ Qs5: Explain how the following function would be used
       }, 100);
     }
 ```
+
+the double function accepts two arguments. the first will be a number and the second will be a callback which executes after 100ms.
