@@ -78,7 +78,7 @@ Qs3: If nothing is provided to `foo` we want the default response to be `5`. Exp
 
 Answer: Any falsy value will result in d resorting to the default value of 5 which may not be the intention of the use.
 
-This could still be useful though in the context of interest, like in the following example:
+This could still be useful though in the context of finance, like in the following example:
 
 ```js
     function increaseInterestRate(d) {
@@ -105,13 +105,13 @@ Answer: The output will be
 ```
 3
 ```
-The concept shown here is a closure. a variable called bar calls on the function foo which returns the inner anonymous function. 
+This is a closure. a variable called bar calls on the function foo which returns the inner anonymous function. 
 
 In essense bar will be bar = function(b) {return a + b}
 
 bar can then be called with whatever value we want. But here is the special thing about closures, the inner function always has access to the variables and parameters of its outer function, even after the function has returned. So in this specific example, bar will still have access to a!
 
-That is why bar = function(b) {return a + b} will still work, despite a not looking like it has been defined.
+That is why bar = function(b) {return a + b} will still work, despite "a" not looking like it has been defined.
 
 The scope looks like the following:
 
