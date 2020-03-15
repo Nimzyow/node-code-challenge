@@ -1,4 +1,4 @@
-const sequelize = require("../data/GB.tsv");
+const sequelize = require("../db");
 
 const locationQueryHandler = async (req, res) => {
   try {
