@@ -2,7 +2,8 @@ const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: "../../../Documents/sqlite-tools-osx-x86-3310100/GB.tsv"
+  storage:
+    "/Users/nimasoufiani/Documents/sqlite-tools-osx-x86-3310100/production"
 });
 
 const connect = async () => {
