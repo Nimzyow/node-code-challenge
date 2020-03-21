@@ -10,7 +10,7 @@ app.get("/locations?:q", async (req, res) => {
   //req.query property is an object containing a property for each query string parameter in the route. If there is no query string, it is the empty object, {}.
   try {
     const [results, metadata] = await sequelize.query(
-      `SELECT * FROM places WHERE name LIKE '${req.query.q}%'`
+      `SELECT * FROM places WHERE name LIKE '${req.query.q}%';`
     );
     res.json({ msg: JSON.stringify(results) });
   } catch (error) {
