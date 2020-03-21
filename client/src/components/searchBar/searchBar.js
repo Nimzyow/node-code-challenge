@@ -1,14 +1,30 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import "./searchBar.css";
+import PropTypes from "prop-types";
 
-const searchBar = () => {
+const SearchBar = ({ queryHandler }) => {
+  const [query, setQuery] = useState("");
+
   return (
     <Fragment>
-      <div>
-        <h1>Hello world!</h1>
-      </div>
+      <input
+        type="text"
+        id="search-bar"
+        name="search-bar"
+        value={query}
+        onChange={event => {
+          setQuery(event.target.value);
+          queryHandler(query);
+        }}
+        className="search-container"
+        placeholder="Click here to begin searching for places"
+      />
     </Fragment>
   );
 };
 
-export default searchBar;
+SearchBar.propTypes = {
+  queryHandler: PropTypes.func.isRequired
+};
+
+export default SearchBar;

@@ -1,17 +1,3 @@
-// const express = require("express");
-// const cors = require("cors");
-// const locationQueryHandler = require("./routes/locationQueryHandler");
-
-// const app = express();
-// //cors is the middleware we need that
-// app.use(cors());
-
-//app.get("/locations?:q", locationQueryHandler);
-
-// app.get("/", (req, res) => res.json({ msg: "hi" }));
-
-// module.exports = app;
-
 const express = require("express");
 const cors = require("cors");
 const sequelize = require("./db");
