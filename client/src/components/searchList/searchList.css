@@ -1,8 +1,8 @@
-.search-result-item {
+.search-results {
   padding: 7px 7px;
 }
 
-.item-let-long {
+.item-displayed-horizontally {
   display: inline-block;
   font-size: 0.8em;
   margin-left: 5px;

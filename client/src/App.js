@@ -13,7 +13,6 @@ function App() {
   }, []);
 
   const queryHandler = async selection => {
-    console.log("we got here " + selection);
     if (selection.length > 2) {
       const res = await axios.get(
         `http://localhost:4000/locations?q=${selection}`

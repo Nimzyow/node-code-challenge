@@ -10,9 +10,9 @@ const SearchList = ({ list }) => {
     <ul className="search-list">
       {list.map(item => {
         return (
-          <li key={item.geonameid} className="search-result-item">
+          <li key={item.geonameid} className="search-results">
             {item.name}
-            <p className="item-let-long">
+            <p className="item-displayed-horizontally">
               ({item.latitude}, {item.longitude})
             </p>
           </li>

@@ -3,7 +3,7 @@ import "./searchBar.css";
 import PropTypes from "prop-types";
 
 const SearchBar = ({ queryHandler }) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("hast");
 
   return (
     <Fragment>
