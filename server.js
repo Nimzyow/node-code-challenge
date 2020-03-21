@@ -18,8 +18,4 @@ app.get("/locations?:q", async (req, res) => {
   }
 });
 
-app.get("/", (req, res) => {
-  res.json({ msg: "Hello world!" });
-});
-
 module.exports = app;
