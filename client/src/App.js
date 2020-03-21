@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import "./App.css";
 import SearchBar from "./components/searchBar/searchBar";
 import SearchList from "./components/searchList/searchList";
@@ -8,6 +8,7 @@ function App() {
   const [list, setList] = useState(null);
   const [startQuery, setStartQuery] = useState("hast");
 
+  //start search with "hast"
   useEffect(() => {
     queryHandler(startQuery);
   }, []);
@@ -19,19 +20,20 @@ function App() {
       );
       setList(JSON.parse(res.data.msg));
     } else {
+      //stop rendering list when character number of selection is 2 or less
       setList(null);
     }
   };
 
   return (
-    <div className="App">
+    <Fragment>
       <SearchBar
         queryHandler={selection => {
           queryHandler(selection);
         }}
       />
       <SearchList list={list} />
-    </div>
+    </Fragment>
   );
 }
 
