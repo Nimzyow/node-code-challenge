@@ -1,0 +1,10 @@
+.search-result-item {
+  padding: 7px 7px;
+}
+
+.item-let-long {
+  display: inline-block;
+  font-size: 0.8em;
+  margin-left: 5px;
+  color: rgb(99, 99, 99);
+}

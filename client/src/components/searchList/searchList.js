@@ -1,10 +1,24 @@
 import React from "react";
+import "./searchList.css";
 
 const SearchList = ({ list }) => {
+  if (list == null || list.length === 0) {
+    return null;
+  }
+
   return (
-    <div>
-      <h1>Hello list!</h1>
-    </div>
+    <ul className="search-list">
+      {list.map(item => {
+        return (
+          <li key={item.geonameid} className="search-result-item">
+            {item.name}
+            <p className="item-let-long">
+              ({item.latitude}, {item.longitude})
+            </p>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 

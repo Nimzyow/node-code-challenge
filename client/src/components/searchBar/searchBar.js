@@ -17,7 +17,7 @@ const SearchBar = ({ queryHandler }) => {
           queryHandler(query);
         }}
         className="search-container"
-        placeholder="Click here to begin searching for places"
+        placeholder="Click here to begin searching for places."
       />
     </Fragment>
   );
