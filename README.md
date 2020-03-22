@@ -47,9 +47,27 @@ You will see this:
 ```
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: "PATH_TO_YOUR_DATABASE/nodetest"
+  storage: "PATH_TO_YOUR_DATABASE/node-challenge"
 });
 ```
+
+replace the PATH_TO_YOUR_DATABASE with the path to your database where you created the node-challenge database.
+
+#Let's talk about running this application now!
+
+To run the server, go to root and run:
+
+```
+$ node index.js
+```
+
+To run the front end, cd into client and run:
+
+```
+$ npm start
+```
+
+And finally, don't forget to have fun! :)
 
 ---
 
