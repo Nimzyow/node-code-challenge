@@ -1,12 +1,66 @@
 # Node code challenge
 
+## Database setup
+
+You will need to use SQLite so make sure you download the SQLite tools appropriate to you from the folowing link:
+
+https://www.sqlite.org/download.html
+
+Once you've installed that then make a directory where you intend to place your database.
+
+Open your terminal, CD into that directory and run:
+
+```
+$ sqlite3 node-challenge
+```
+
+We will need to create a table so run the following command:
+
+```
+create table places(geonameid, name, asciiname, alternatenames, latitude, longitude, feature_class, feature_code, country_code, cc2, admin1_code, admin2_code, admin3_code, admin4_code, population, elevation, dem, timezone, modification_date);
+```
+
+The .tsv file provided with this challenge actually seperates the categories with tabs. So we will need to run the following command:
+
+```
+separator "\t"
+```
+
+Now you'll need to know where the .tsv file is from your root directory. I recommend opening another terminal, cd into the folder with the .tsv in it and run:
+
+```
+pwd
+```
+
+copy the output, which will be the location from your root to the .tsv folder. Go back to the terminal with sqlite3 running and run the following but replacing the PATH
+
+```
+.import PATH_TO_YOUR_TSV_FILE/GB.tsv places
+```
+
+There is just one more thing you need to do before getting this whole thing running!
+
+Go to the root of this project and open db.js
+
+You will see this:
+
+```
+const sequelize = new Sequelize({
+  dialect: "sqlite",
+  storage: "PATH_TO_YOUR_DATABASE/nodetest"
+});
+```
+
+---
+
+#Challenge
 This challenge has three parts:
 
 1. Written answers to [Questions](./QUESTIONS.md)
 2. Build a geo search server
 3. Build a form to search and display results
 
-We're looking for elegant, clean solutions.  Try to think of and handle possible edge cases.
+We're looking for elegant, clean solutions. Try to think of and handle possible edge cases.
 
 This challenge is sent to experienced developers and newcomers alike. Developers who are familiar with the technologies can complete this within an hour, those who are less familiar will take longer. We suggest spending a maximum of 2 hours on this challenge, the objective is to demonstrate you think through a problem.
 
@@ -78,11 +132,11 @@ When the user starts typing the results should be displayed in the list below.
 
 ```
 
-NOTE: It is important to display the correct results for a given search term. 
+NOTE: It is important to display the correct results for a given search term.
 
 Implementation:
 
-The implementation should be a single page app.  Feel free to use any tools or frameworks to create the solution. The solution is only required to support the latest version of Chrome.
+The implementation should be a single page app. Feel free to use any tools or frameworks to create the solution. The solution is only required to support the latest version of Chrome.
 
 ## Rules
 
@@ -90,9 +144,9 @@ All work should be commited into a fork of this repo. Please note you won't have
 
 You'll get bonus points if you
 
- * Display coordinates next to results
- * Unit test your code
- * Provide good documentation
- * Sort the results by the closest name match
+- Display coordinates next to results
+- Unit test your code
+- Provide good documentation
+- Sort the results by the closest name match
 
 Good luck!
