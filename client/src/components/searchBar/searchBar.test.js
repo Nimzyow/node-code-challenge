@@ -31,4 +31,12 @@ describe("SearchBar", () => {
     console.log(component.props().value);
     expect(component.props().value).toBe("hast");
   });
+
+  test("expect value of query to change", () => {
+    const wrapper = setup();
+    let searchBar = findByTestAttr(wrapper, "search-bar");
+    searchBar.simulate("change", { target: { value: "Something" } });
+    let updatedSearchBar = findByTestAttr(wrapper, "search-bar");
+    expect(updatedSearchBar.props().value).toBe("Something");
+  });
 });
