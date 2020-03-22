@@ -8,6 +8,7 @@ const SearchBar = ({ queryHandler }) => {
   return (
     <Fragment>
       <input
+        data-test="search-bar"
         type="text"
         id="search-bar"
         name="search-bar"
