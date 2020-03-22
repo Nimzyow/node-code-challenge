@@ -37,4 +37,32 @@ describe("SearchList.js", () => {
     const component = findByTestAttr(wrapper, "search-list");
     expect(component.length).toBe(1);
   });
+  test("renders correct number based on list length", () => {
+    const wrapper = setup();
+    const component = findByTestAttr(wrapper, "search-results");
+    expect(component.length).toBe(2);
+  });
+  test("text is displayed correctly", () => {
+    const list = [
+      {
+        geonameid: 1,
+        name: "hastings",
+        latitude: 1000,
+        longitude: 2000
+      },
+      {
+        geonameid: 2,
+        name: "something",
+        latitude: 2000,
+        longitude: 3000
+      }
+    ];
+    const wrapper = setup();
+    const component = findByTestAttr(wrapper, "search-item");
+    component.forEach((item, index) => {
+      expect(item.text()).toBe(
+        `(${list[index].latitude}, ${list[index].longitude})`
+      );
+    });
+  });
 });
