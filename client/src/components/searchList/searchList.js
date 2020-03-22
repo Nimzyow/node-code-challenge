@@ -7,7 +7,7 @@ const SearchList = ({ list }) => {
   }
 
   return (
-    <ul className="search-list">
+    <ul className="search-list" data-test="search-list">
       {list.map(item => {
         return (
           <li key={item.geonameid} className="search-results">
